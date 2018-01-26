@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Vikki" content="">
+    <title>Load Balancing Redesign</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Lato' rel='stylesheet' type='text/css'>   
+    <link href='https://www.google.com/fonts#QuickUsePlace:quickUse/Family:Slabo+27px' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+
+    <!-- Link to jQuery (1.8 or later), -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/parallax.min.js"></script>  
+
+    <!-- fotorama.css & fotorama.js. -->
+    <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header id="header">
+            <div class="navbar-wrap">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-logo">
+                            <a href="index.html">
+                            </a>
+                        </div>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar" style="height: 3px"></span>
+                                <span class="icon-bar" style="height: 3px"></span>
+                                <span class="icon-bar" style="height: 3px"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <div class="righ-side">
+                                <ul class="nav navbar-nav" id="top-nav-2" >
+                                    <li class="current" style="color: #000000"><a href="index.html">Design</a></li>
+                                    <li><a href="assets/resume.pdf">Resume</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="container" >  
+            <section style="padding-top:100px; padding-bottom:40px">
+                <div class="proSectionPadding">
+                    <div class="row" >
+                        <div class="col-xs-12 col-md-8 col-md-offset-2" style="padding-left:0">
+                            <!-- <img class="img-me" src="assets/avatar.jpg"/> -->
+                            <h1 class="SCtitle" style="text-align: center;">LOAD BALANCING REDESIGN</h1>
+                            <p class="SCsubtitle" style="text-align: center;">A guided expereince for load balancing configuration.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+            <section id="imgCaption">
+                <div class="proSectionPadding col-xs-12 col-md-8 col-md-offset-2">
+                    <h2>Problem</h2>
+                    <p style="margin-bottom: 1em">There are 2 different options to distribute network traffic using Microsoft Azure - Load Balancer and Application Gateway. These options work differently from each other, having a different feature set and support different scenarios. They can each be used in isolation, or combining them. But our users <strong>don't know which to choose</strong>. Even if they picked the right thing for their scenario, the success rate of configuring a load balancer/application gateway is <strong>lower than 50%</strong> according to usability studies. Fun fact: we once did a workshop with PMs from compute and network API team, almost all of them failed the task to set up a load balancer.</p>
+                </div>
+                <div class="proContainer" style="width:100%">
+                    <div style="text-align:center">
+                        <img src="image/lb1.png" style="margin-bottom: 0"></img>
+                        <span style="display:block;margin-bottom:10px">Current load balancer setup expereience</span>
+                    </div>
+                </div>
+                <div class="proSectionPadding col-xs-12 col-md-8 col-md-offset-2">
+                    <p>Problem with current design:</p>
+                    <ul>
+                        <li>Load balancer and application gateway have totally separated entry points in Azure. We don't provide an experience for them to compare and choose.</li>
+                        <li>Users only specifies the minimum information when creating a load balancer, and there's no guided experience for configuration after they finish creating it.</li>
+                    </ul> 
+                </div>
+            </section>
+            <section id="imgCaption"> <!--grey-->
+                <div class="proSectionPadding col-xs-12 col-md-8 col-md-offset-2">
+                    <h2>Conceptual sketches</h2>
+                    <p style="margin-bottom: 1em">With PM and devs, we did a quick concept brainstorming and pulled together some concetptual sketches.</p>                    
+                </div>
+                <div style="width:100%">
+                    <img src="image/lb2.png">
+                </div>
+            </section>
+            <section id="imgCaption"> <!--grey-->
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <h2>Task flow</h2>
+                    <p>I created a task flow taking in consideration of two main scenarios:</p>
+                    <ul style="margin-bottom: 1em">
+                        <li>New users who needs a recommendation of what type to use. They would want to finish create quickly and configure later.</li>
+                        <li>Frequent users who know what they need and want to set up everything at once.</li>
+                    </ul>
+                </div> 
+                <div style="width:100%">
+                    <img src="image/lb3.png">
+                </div>
+            </section>
+            <section id="imgCaption"> <!--grey-->
+                <div class="proSectionPadding col-xs-12 col-md-8 col-md-offset-2">
+                    <h2>Mockups</h2>
+                    <p style="margin-bottom: 1em">Below are the mockups for new user onboarding flow. When users start for the first time, we ask them about their requirements and give them recommendation on which load balancing type to choose.</p>
+                </div>
+                <div class="proContainer" style="width:100%">
+                    <div style="text-align:center">
+                        <img src="image/lb4.png" style="margin-bottom: 0"></img>
+                        <span style="display:block;margin-bottom:10px">New user guided selection</span>
+                    </div>
+                </div>
+                <div class="proSectionPadding col-xs-12 col-md-8 col-md-offset-2">
+                    <p style="margin-bottom: 1em">After selecting the right type, users can choose to finish load balancer configuration during create.</p>
+                </div>
+                <div class="proContainer" style="width:100%">
+                    <div style="text-align:center">
+                        <img src="image/lb5.png" style="margin-bottom: 0"></img>
+                        <span style="display:block;margin-bottom:10px">Load balancer configuration</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <p class="footerSign">Wenqi Li @ Seattle 2017. For life and love.</p>  
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58997332-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</body>
